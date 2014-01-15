@@ -1,0 +1,4 @@
+Django
+django-tastypie
+django_compressor
+django-filter
