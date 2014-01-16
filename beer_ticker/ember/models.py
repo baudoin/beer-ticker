@@ -1,6 +1,6 @@
 from tastypie.utils.timezone import now
-from django.contrib.auth.models import Beer
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 class Beer(models.Model):

@@ -1,4 +1,4 @@
-var Beer = DS.Model.extend({
+App.Beer = DS.Model.extend({
   'name': DS.attr('string'),
   'brewer': DS.attr('string'),
   'abv': DS.attr('string'),

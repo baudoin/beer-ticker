@@ -1,0 +1,1 @@
+App.ApplicationAdapter = DS.DjangoTastypieAdapter.extend();
