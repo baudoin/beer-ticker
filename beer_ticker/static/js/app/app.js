@@ -16,12 +16,8 @@ App.Beer = DS.Model.extend({
 });
 
 App.Router.map(function() {
-  this.resource('beers', function(){
-    this.resource('beer', { path:'/:user_id' }, function(){
-      this.route('edit');
-    });
-    this.route('create');
-  });
+  this.resource('beers');
+  this.resource('beer', { path:'beer/:user_id' });
 });
 
 App.beersRoute = Ember.Route.extend({
@@ -44,5 +40,8 @@ App.beersController = Ember.ArrayController.extend({
   }.property('@each')
 });
 
-App.ApplicationAdapter = DS.DjangoTastypieAdapter.extend();
+// Ember-data store using the Django Tastypie adapter
+App.ApplicationAdapter = DS.DjangoTastypieAdapter.extend({
+  namespace: 'api/v1'
+});
 App.ApplicationSerializer = DS.DjangoTastypieSerializer.extend({});

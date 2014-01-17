@@ -6,11 +6,23 @@ from django.conf.urls.static import static
 
 admin.autodiscover()
 
+# Tasty Pie
+from tastypie.api import Api
+from beer_ticker.ember.api.resources import BeerResource
+v1_api = Api(api_name='v1')
+v1_api.register(BeerResource())
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'beer_ticker.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     # url(r'^codecamp', include('codecamp.ember.urls', namespace='codecamp')),
-    url(r'^$', HomeView.as_view()),
+    
     url(r'^admin/', include(admin.site.urls)),
+
+  	url(r'^$', HomeView.as_view()),
+
+     # Tasty Pie Endpoint
+    (r'^api/', include(v1_api.urls)),
+
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
