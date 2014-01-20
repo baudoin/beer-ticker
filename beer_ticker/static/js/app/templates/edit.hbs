@@ -1,0 +1,30 @@
+<div class="beer-edit">
+  
+  <div>
+	  <label>What's the name?</label><br>
+	  {{input value=name}}
+	</div>
+
+	<div>
+	  <label>Who's the brewer?</label><br>
+	  {{input value=brewer}}
+  </div>
+
+	<div>
+	  <label>ABV</label><br>
+	  {{input value=abv}}
+  </div>
+
+  <div>
+	  <label>IBU</label><br>
+	  {{input value=ibu}}
+  </div>
+
+	<div>
+	  <label>Tasting Notes:</label><br>
+	  {{textarea value=note}}
+  </div>
+
+  <button {{action "save"}}> ok </button>
+
+</div>

@@ -5,3 +5,16 @@
   <strong>ABV:</strong> {{abv}}</p>
   <p><strong>Tasting Notes:</strong> {{note}}</p>
 </div>
+
+<button {{action "edit"}}>Edit</button>
+<button {{action "delete"}}>Delete</button>
+
+{{outlet}}
+
+{{#if deleteMode}}
+<div class="confirm-box">
+  <h4>Really?</h4>
+  <button {{action "confirmDelete"}}> yes </button>
+  <button {{action "cancelDelete"}}> no </button>
+</div>
+{{/if}}

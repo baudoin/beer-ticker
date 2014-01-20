@@ -19,10 +19,7 @@ urlpatterns = patterns('',
     # url(r'^codecamp', include('codecamp.ember.urls', namespace='codecamp')),
     
     url(r'^admin/', include(admin.site.urls)),
-
+	  url(r'^api/', include(v1_api.urls)),
   	url(r'^$', HomeView.as_view()),
-
-     # Tasty Pie Endpoint
-    (r'^api/', include(v1_api.urls)),
 
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,8 +1,10 @@
 <h2>Your Total Beers: {{beersCount}}</h2>
 
+{{#link-to "beers.create" class="create-btn"}} Add Beer {{/link-to}}
+
 <ul class="beers-listing">
   
-  {{#each beer in beers}}
+  {{#each beer in controller}}
 	  <li>
 	    {{#link-to "beer" beer}}
 	      {{beer.name}}
