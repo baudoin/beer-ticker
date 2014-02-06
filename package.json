@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "django-ember-precompile": "1.2.0",
-    "karma-ember-preprocessor": "*",
-    "karma-qunit": "*",
-    "karma": "0.10.2"
+    "django-ember-precompile": "1.2.0"
   }
 }

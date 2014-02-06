@@ -9,19 +9,24 @@ window.App = Ember.Application.create({
 
 App.Beer = DS.Model.extend({
   'name': DS.attr('string'),
-  'brewer': DS.attr('string'),
+  'brewer': DS.belongsTo('person'),
   'abv': DS.attr('string'),
   'ibu': DS.attr('string'),
   'note': DS.attr('string'),
 });
+App.Brewer = DS.Model.extend({
+  name: DS.attr('string'),
+  beers: DS.hasMany('beer', {async: true})
+});
 
 App.Router.map(function() {
-  this.resource('beers', function(){
-    this.route('create');
+  this.resource('beers', { path:'/' }, function(){
 
     this.resource('beer', { path:'/:beer_id' }, function(){
       this.route('edit');
     });
+
+    this.route('create');
   });
 });
 
@@ -40,6 +45,9 @@ App.BeerRoute = Ember.Route.extend({
 App.BeerEditRoute = Ember.Route.extend({
   model: function(){ 
     return this.modelFor('beer');
+  },
+  renderTemplate: function(){
+    this.render('edit');
   }
 });
 
@@ -50,9 +58,7 @@ App.BeersCreateRoute = Ember.Route.extend({
   },
 
   renderTemplate: function(){
-    this.render('edit', {
-      controller: 'BeersController'
-    });
+    this.render('create');
   }
 });
 
@@ -78,14 +84,6 @@ App.BeerController = Ember.ObjectController.extend({
   }
 });
 
-App.BeersController = Ember.ArrayController.extend({
-  sortProperties: ['name'],
-  sortAscending: true,
-  beersCount: function(){
-    return this.get('model.length');
-  }.property('@each')
-});
-
 App.BeerEditController = Ember.ObjectController.extend({
   actions: {
     save: function(){
@@ -96,11 +94,21 @@ App.BeerEditController = Ember.ObjectController.extend({
   }
 });
 
+App.BeersController = Ember.ArrayController.extend({
+  sortProperties: ['name'],
+  sortAscending: true,
+  beersCount: function(){
+    return this.get('model.length');
+  }.property('@each')
+});
+
 App.BeersCreateController = Ember.ObjectController.extend({
   actions: {
     save: function(){
-      var newUser = this.store.createRecord('beer', this.get('model'));
-      newBeer.save();
+      var newBeer = this.store.createRecord('beer', {
+        name: name
+      });
+      newBeer.save().pushObject(newBeer);
 
       this.transitionToRoute('beer', newBeer);
     }

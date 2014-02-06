@@ -29,11 +29,11 @@
     "ember": "~> 1.2.0-beta.2"
   },
   "homepage": "https://github.com/stefanpenner/ember-jj-abrams-resolver",
-  "_release": "368a2a1aa8",
+  "_release": "1d37dc0692",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "368a2a1aa817dc12857a40c460746cf5eb1921d2"
+    "commit": "1d37dc06924b1a82151112fa5931af50db995a01"
   },
   "_source": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git",
   "_target": "master",

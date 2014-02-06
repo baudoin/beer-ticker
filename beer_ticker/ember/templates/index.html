@@ -18,7 +18,7 @@
 	{% compress js %}
 
 	<script src="{{ STATIC_URL }}js/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-	<script src="{{ STATIC_URL }}js/vendor/handlebars/handlebars.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/vendor/handlebars/handlebars.min.js" type="text/javascript"></script>
 	<script src="{{ STATIC_URL }}js/vendor/ember/ember.js" type="text/javascript"></script>
 	<script src="{% static 'js/vendor/ember-data/ember-data.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vendor/momentjs/moment.js' %}" type="text/javascript"></script>
@@ -30,12 +30,15 @@
   <script src="{% static 'js/app/templates/beers.hbs' %}" type="text/x-handlebars"></script>
   <script src="{% static 'js/app/templates/beer.hbs' %}" type="text/x-handlebars"></script>
   <script src="{% static 'js/app/templates/edit.hbs' %}" type="text/x-handlebars"></script>
+  <script src="{% static 'js/app/templates/create.hbs' %}" type="text/x-handlebars"></script>
   <script src="{% static 'js/app/templates/error.hbs' %}" type="text/x-handlebars"></script>
   <script src="{% static 'js/app/templates/loading.hbs' %}" type="text/x-handlebars"></script>
 
   <script src="{% static 'js/app/app.js' %}" type="text/javascript"></script>
 
 	{% endcompress %}
+
+  {% csrf_token %}
 
 </body>
 </html>
